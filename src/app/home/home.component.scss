@@ -1,0 +1,42 @@
+main {
+    width: calc(100% - 3rem);
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 1.5rem;
+}
+
+main>article {
+    width: 100%;
+    height: 32px;
+    padding: 1rem;
+    background-color: #FFF;
+}
+
+main>figure {
+    width: 100%;
+    margin: 0;
+    background-color: #FFF;
+    background-size: cover;
+    border-radius: 1rem;
+    transition: all 100ms ease-out;
+}
+
+main>figure:hover {
+    box-shadow: 0 16px 16px -4px rgba(0, 0, 0, 0.3);
+    transform: scale(1.02);
+}
+
+main>figure:after {
+    content: "";
+    padding-bottom: 100%;
+    display: block;
+}
+
+main>figure>figcaption {
+    margin: 1rem;
+    color: #FFF;
+    font-size: 1.25em;
+    position: absolute;
+}

@@ -1,0 +1,15 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    .forgot-password {
+        margin-top: 8px;
+        text-align: right;
+        a {
+            color: #666;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
