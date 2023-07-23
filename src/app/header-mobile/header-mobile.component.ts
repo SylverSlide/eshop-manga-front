@@ -1,9 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {
-  faBagShopping,
-  faUser,
-  faCartShopping,
-} from '@fortawesome/free-solid-svg-icons';
+import { faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header-mobile',

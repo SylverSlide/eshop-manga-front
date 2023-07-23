@@ -4,8 +4,11 @@
     <div>
         <article id="title"><img id="logo" src="assets/tokyo-cards-logo.png" alt=""></article>
         <article id="reference">
-            <button class="btn btn-icon"><fa-icon [icon]="faBag"></fa-icon>  <span class="badge">15</span></button>
+            <button class="btn btn-icon"><fa-icon [icon]="faBag"></fa-icon>  <span class="badge">{{ cartItemCount }}</span></button>
             <button class="btn" (click)="openDialog()"><fa-icon [icon]="faUser"></fa-icon></button>
         </article>
+        <div class="cart-popup" *ngIf="showPopup">
+            Votre panier a été mis à jour !
+        </div>
     </div>
 </header>

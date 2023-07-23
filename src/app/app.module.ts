@@ -12,6 +12,9 @@ import { LoginModalComponent } from './login-modal/login-modal.component';
 import { MaterialModule } from './material/material.module';
 import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { ProductComponent } from './product/product.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms'; // Assurez-vous d'importer ReactiveFormsModule
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +31,8 @@ import { ProductComponent } from './product/product.component';
     FontAwesomeModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

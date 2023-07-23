@@ -22,6 +22,11 @@ $tokyo-cards-front-theme: mat.define-light-theme(( color: ( primary: $tokyo-card
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($tokyo-cards-front-theme);
+@font-face {
+    font-family: 'recoleta';
+    src: url('./assets/font/Recoleta_Font/recoleta-regulardemo.otf') format('truetype');
+}
+
 html,
 body {
     height: 100%;
@@ -29,5 +34,5 @@ body {
 
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'recoleta', "Helvetica Neue", sans-serif;
 }
