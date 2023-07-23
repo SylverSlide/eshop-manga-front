@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { MaterialModule } from './material/material.module';
 import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { ProductComponent } from './product/product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +19,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FooterComponent,
     HomeComponent,
     LoginModalComponent,
-    HeaderMobileComponent
+    HeaderMobileComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,9 +28,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FontAwesomeModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

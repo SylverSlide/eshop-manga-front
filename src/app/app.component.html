@@ -1,4 +1,6 @@
-<app-header fxHide.lt-sm></app-header>
-<app-header-mobile fxShow.lt-sm></app-header-mobile>
-<router-outlet></router-outlet>
+<app-header *ngIf="!isMobile"></app-header>
+<app-header-mobile *ngIf="isMobile"></app-header-mobile>
+<div class="main">
+    <router-outlet></router-outlet>
+</div>
 <app-footer></app-footer>
