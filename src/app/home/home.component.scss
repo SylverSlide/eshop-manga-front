@@ -1,21 +1,7 @@
-@media (min-width: 768px) {
-    main {
-        width: calc(100% - 3rem);
-        max-width: 800px;
-        margin: 10px auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        grid-gap: 1.5rem;
-    }
+h1 {
+    font-size: 3em;
 }
 
-@media (max-width: 768px) {
-    main {
-        width: calc(100% - 3rem);
-        max-width: 800px;
-        margin: 150px auto 0;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        grid-gap: 1.5rem;
-    }
+.container {
+    margin-top: 100px;
 }

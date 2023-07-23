@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -8,6 +8,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
   id: number;
+  @Input() productName: string;
+  @Input() productImageUrl: string;
+  @Input() productPrice: number;
+  @Input() isAvailableInStock: boolean;
 
   constructor(private route: ActivatedRoute) {}
 

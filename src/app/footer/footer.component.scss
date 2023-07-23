@@ -49,7 +49,7 @@
 
 .social ul li {
     display: inline-block;
-    padding-right: 5px !important;
+    padding-right: 20px !important;
 }
 
 .footer .col ul li:hover {
@@ -59,8 +59,17 @@
     -moz-transition: .1s;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
+
 .clearfix {
     clear: both;
+}
+
+fa-icon {
+    font-size: 1.8em;
 }
 
 @media only screen and (min-width: 1280px) {

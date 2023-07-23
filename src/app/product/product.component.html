@@ -1,1 +1,30 @@
-<p>product works!</p>
+<div class="page-inner">
+    <div class="row">
+        <div class="el-wrapper shadow">
+            <div class="box-up">
+                <img class="img" [src]="productImageUrl" alt="box-4">
+                <div class="img-info">
+                    <div class="info-inner">
+                        <span class="p-name">{{productName}}</span>
+                    </div>
+                    <div class="a-size" *ngIf="isAvailableInStock">Disponibles en Stock</div>
+                    <div class="a-size" *ngIf="!isAvailableInStock">Disponibles en Stock</div>
+
+                </div>
+            </div>
+
+            <div class="box-down">
+                <div class="h-bg">
+                    <div class="h-bg-inner"></div>
+                </div>
+
+                <a class="cart" href="#">
+                    <span class="price">{{productPrice}} JPY</span>
+                    <span class="add-to-cart">
+              <span class="txt">Add to cart</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
