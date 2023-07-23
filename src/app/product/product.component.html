@@ -13,11 +13,11 @@
                             <div *ngIf="!isAvailableInStock" class="text-danger">Out of stock</div>
 
                             <div *ngIf="isAvailableInStock" class="col quantity-input">
-                                <button class="me-2" mat-raised-button (click)="decrement()">-</button>
+                                <button mat-raised-button (click)="decrement()">-</button>
                                 <mat-form-field style="width:50px;">
                                     <input type="text" formControlName="quantity" class="form-control text-dark text-center" matInput>
                                 </mat-form-field>
-                                <button class="ms-2" mat-raised-button (click)="increment()">+</button>
+                                <button mat-raised-button (click)="increment()">+</button>
                             </div>
                         </div>
                     </form>
