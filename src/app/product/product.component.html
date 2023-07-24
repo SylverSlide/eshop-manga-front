@@ -1,50 +1,41 @@
 <div class="page-inner">
-  <div class="row">
-    <div class="el-wrapper shadow">
-      <div class="box-up">
-        <img class="img" [src]="productImageUrl" alt="box-4" />
-        <div class="img-info">
-          <form [formGroup]="productForm">
-            <div class="info-inner">
-              <span class="p-name">{{ productName }}</span>
+    <div class="row">
+        <div class="el-wrapper shadow">
+            <div class="box-up">
+                <img class="img" [src]="productImageUrl" alt="box-4">
+                <div class="img-info">
+                    <form [formGroup]="productForm">
+                        <div class="info-inner">
+                            <span class="p-name">{{productName}}</span>
+                        </div>
+                        <div class="row a-size">
+                            <div *ngIf="isAvailableInStock" class="text-success">Disponibles en Stock</div>
+                            <div *ngIf="!isAvailableInStock" class="text-danger">Out of stock</div>
+
+                            <div *ngIf="isAvailableInStock" class="col quantity-input">
+                                <button mat-raised-button (click)="decrement()">-</button>
+                                <mat-form-field style="width:50px;">
+                                    <input type="text" formControlName="quantity" class="form-control text-dark text-center" matInput>
+                                </mat-form-field>
+                                <button mat-raised-button (click)="increment()">+</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="row a-size">
-              <div *ngIf="isAvailableInStock" class="text-success">
-                Disponibles en Stock
-              </div>
-              <div *ngIf="!isAvailableInStock" class="text-danger">
-                Out of stock
-              </div>
 
-              <div *ngIf="isAvailableInStock" class="col quantity-input">
-                <button mat-raised-button (click)="decrement()">-</button>
-                <mat-form-field style="width: 50px">
-                  <input
-                    type="text"
-                    formControlName="quantity"
-                    class="form-control text-dark text-center"
-                    matInput
-                  />
-                </mat-form-field>
-                <button mat-raised-button (click)="increment()">+</button>
-              </div>
+            <div class="box-down">
+                <div class="h-bg">
+                    <div class="h-bg-inner"></div>
+                </div>
+
+                <a class="cart" href="#" (click)="addToCart()">
+                    <span class="price">{{productPrice}} JPY</span>
+                    <span class="add-to-cart">
+              <span class="txt">Add to cart</span>
+                    </span>
+                </a>
             </div>
-          </form>
         </div>
-      </div>
-
-      <div class="box-down">
-        <div class="h-bg">
-          <div class="h-bg-inner"></div>
-        </div>
-
-        <a class="cart" href="#" (click)="addToCart()">
-          <span class="price">{{ productPrice }} JPY</span>
-          <span class="add-to-cart">
-            <span class="txt">Add to cart</span>
-          </span>
-        </a>
-      </div>
     </div>
-  </div>
 </div>
