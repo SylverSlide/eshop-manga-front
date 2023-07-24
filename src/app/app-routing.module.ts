@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
-import { ProductComponent } from './product/product.component';
+import { ProductSheetComponent } from './product-sheet/product-sheet.component';
 
 const routes: Routes = [
-  { path: 'product/:id', component: ProductComponent },
+  { path: 'product/:id', component: ProductSheetComponent },
   { path: 'header-mobile', component: HeaderMobileComponent },
   { path: '', component: HomeComponent, pathMatch: 'full' },
 ];
