@@ -1,31 +1,33 @@
-<h1 mat-dialog-title>Login</h1>
-<div mat-dialog-content>
-  <form class="login-form">
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput />
-    </mat-form-field>
+<div class="container">
+    <h1 mat-dialog-title>Login</h1>
+    <div mat-dialog-content>
+        <form class="login-form">
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput />
+            </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Mot de passe</mat-label>
-      <input matInput type="password" />
-    </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Mot de passe</mat-label>
+                <input matInput type="password" />
+            </mat-form-field>
 
-    <div class="row justify-content-around">
-      <div class="col"><a href="#">Inscription</a></div>
-      <div class="col">
-        <div class="forgot-password">
-          <a href="#">Mot de passe oublié ?</a>
-        </div>
-      </div>
+            <div class="row justify-content-around">
+                <div class="col"><a href="#">Inscription</a></div>
+                <div class="col">
+                    <div class="forgot-password">
+                        <a href="#">Mot de passe oublié ?</a>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-  </form>
-</div>
-<div class="row justify-content-around mt-4">
-  <div class="col text-start">
-    <button mat-button color="primary">Connexion</button>
-  </div>
-  <div class="col text-end">
-    <button mat-button mat-dialog-close>Annuler</button>
-  </div>
+    <div class="row justify-content-around mt-4">
+        <div class="col text-start">
+            <button mat-button color="primary">Connexion</button>
+        </div>
+        <div class="col text-end">
+            <button mat-button mat-dialog-close>Annuler</button>
+        </div>
+    </div>
 </div>

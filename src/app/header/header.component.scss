@@ -23,9 +23,16 @@ header {
 }
 
 #logo {
-    width: 40%;
-    margin-right: auto;
+    margin-left: 400px;
     display: block;
+}
+
+#img-logo {
+    width: 40%;
+}
+
+fa-icon {
+    font-size: 1.7em;
 }
 
 header>.header {
@@ -44,7 +51,8 @@ header>.header {
 }
 
 nav ul {
-    margin-left: -40%;
+    margin-left: -10%;
+    width: 780px;
     list-style: none;
     text-align: center;
 }

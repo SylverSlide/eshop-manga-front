@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
       if (show) {
         setTimeout(() => {
           this.showPopup = false;
-        }, 3000); // 3000 ms = 3 secondes (modifier la durée selon vos besoins)
+        }, 3000);
       }
     });
   }
