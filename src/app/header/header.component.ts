@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { CartService } from '../services/cart.service';
 import { Observable, Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-header',

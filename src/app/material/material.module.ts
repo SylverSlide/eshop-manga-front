@@ -1,9 +1,15 @@
 import { NgModule } from '@angular/core';
-import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  exports: [MatInputModule, MatButtonModule, MatDialogModule],
+  exports: [
+    MatInputModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+  ],
 })
 export class MaterialModule {}

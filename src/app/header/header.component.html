@@ -1,28 +1,28 @@
 <div id="blurry-filter"></div>
 <header>
-  <div class="header">
-    <a [routerLink]="['']">
-      <img id="logo" src="assets/tokyo-cards-logo.png" alt="" />
-    </a>
-    <nav class="stroke">
-      <ul>
-        <li><a href="#">POKEMON</a></li>
-        <li><a href="#">ONE PIECE</a></li>
-        <li><a href="#">Dragon Ball Super</a></li>
-        <li><a href="#">Yu-Gi-Oh!</a></li>
-        <li><a href="#">Ultra Pro et Accessoires</a></li>
-      </ul>
-    </nav>
-    <button class="btn btn-icon">
+    <div class="header">
+        <a [routerLink]="['']">
+            <img id="logo" src="assets/tokyo-cards-logo.png" alt="" />
+        </a>
+        <nav class="stroke">
+            <ul>
+                <li><a href="#">POKEMON</a></li>
+                <li><a href="#">ONE PIECE</a></li>
+                <li><a href="#">Dragon Ball Super</a></li>
+                <li><a href="#">Yu-Gi-Oh!</a></li>
+                <li><a href="#">Ultra Pro et Accessoires</a></li>
+            </ul>
+        </nav>
+        <button class="btn btn-icon">
       <fa-icon [icon]="faBag"></fa-icon>
       <span class="badge">{{ cartItemCount }}</span>
     </button>
-    <button class="btn" (click)="openDialog()">
+        <button class="btn" (click)="openDialog()">
       <fa-icon [icon]="faUser"></fa-icon>
     </button>
 
-    <div class="cart-popup" *ngIf="showPopup">
-      Votre panier a été mis à jour !
+        <div class="cart-popup" *ngIf="showPopup">
+            Votre panier a été mis à jour !
+        </div>
     </div>
-  </div>
 </header>

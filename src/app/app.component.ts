@@ -9,11 +9,11 @@ export class AppComponent {
   isMobile: boolean;
 
   constructor() {
-    this.isMobile = window.innerWidth < 1200; // Changer 768 par la valeur que vous considérez comme étant "mobile"
+    this.isMobile = window.innerWidth < 1200;
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-    this.isMobile = event.target.innerWidth < 1200; // Changer 768 par la valeur que vous considérez comme étant "mobile"
+    this.isMobile = event.target.innerWidth < 1200;
   }
 }
