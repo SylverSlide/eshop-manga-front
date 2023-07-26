@@ -1,22 +1,27 @@
 <h1 mat-dialog-title>Connexion</h1>
 <div mat-dialog-content>
-    <form class="login-form">
-        <mat-form-field appearance="fill">
-            <mat-label>Email</mat-label>
-            <input matInput>
-        </mat-form-field>
+  <form class="login-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput />
+    </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Mot de passe</mat-label>
-            <input matInput type="password" placeholder="Entrez votre mot de passe">
-        </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput type="password" />
+    </mat-form-field>
 
+    <div class="row justify-content-around">
+      <div class="col"><a href="#">Inscription</a></div>
+      <div class="col">
         <div class="forgot-password">
-            <a href="#">Mot de passe oublié ?</a>
+          <a href="#">Mot de passe oublié ?</a>
         </div>
-    </form>
+      </div>
+    </div>
+  </form>
 </div>
 <div mat-dialog-actions>
-    <button mat-button color="primary">Connexion</button>
-    <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-button color="primary">Connexion</button>
+  <button mat-button mat-dialog-close>Annuler</button>
 </div>
