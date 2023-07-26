@@ -1,3 +1,120 @@
-<div class="container">
-  <div class="row"><div class="col bg-success">FICHE PRODUIT</div></div>
+<div sty class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-6 col-sm-12 p-5 text-center">
+      <div id="carouselExampleIndicators" class="carousel slide">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="../../assets/box-op-4.png"
+              class="d-block w-100 my-carousel-image"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="../../assets/image-box-04-1.png"
+              class="d-block w-100 my-carousel-image"
+              alt="..."
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="../../assets/box-op-3.png"
+              class="d-block w-100 my-carousel-image"
+              alt="..."
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <fa-icon [icon]="faLeft"></fa-icon>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <fa-icon [icon]="faRight"></fa-icon>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 col-sm-12">
+      <form [formGroup]="productForm">
+        <h1 class="text-center">One Piece Card Game OP-04</h1>
+        <ul>
+          <li>Langue: Japonais</li>
+          <li>Série: ONE PIECE OP04</li>
+          <li>Titre: Kingdoms of Conspiracy</li>
+          <li>Composition: 24 boosters de 6 cartes</li>
+        </ul>
+        <div class="row">
+          <div class="col-2">
+            <mat-form-field style="width: 50px" class="pt-2">
+              <input
+                type="text"
+                formControlName="quantity"
+                class="form-control text-dark text-center"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+          <div class="col mb-5">
+            <div class="row">
+              <div class="col">
+                <button
+                  [disabled]="productForm.value.quantity <= 1"
+                  mat-raised-button
+                  (click)="decrement()"
+                >
+                  -
+                </button>
+              </div>
+              <div class="row mt-2">
+                <div class="col">
+                  <button mat-raised-button (click)="increment()">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col text-center">
+            <button (click)="addToCart()" class="btn effect-smooth">
+              <span>Ajouter au panier</span>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,67 @@
+.my-carousel-image {
+  width: 600px; /* or whatever width you want */
+  height: 600px; /* or whatever height you want */
+  object-fit: contain; /* This property will make sure your image covers the whole area without distorting the aspect ratio */
+}
+
+fa-icon {
+  font-size: 3em;
+  color: black;
+}
+.btn {
+  letter-spacing: 0.1em;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 45px;
+  max-width: 200px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+  border: 2px solid black;
+}
+.btn:hover {
+  text-decoration: none;
+}
+
+.effect-smooth {
+  --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
+  display: var(--uismLinkDisplay);
+  color: #000;
+  position: relative;
+  transition-duration: 0.4s;
+  overflow: hidden;
+}
+
+.effect-smooth::before,
+.effect-smooth span {
+  margin: 0 auto;
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+  transition-duration: 0.4s;
+}
+
+.effect-smooth:hover {
+  background-color: #000;
+}
+
+.effect-smooth:hover span {
+  -webkit-transform: translateY(-400%) scale(-0.1, 20);
+  transform: translateY(-400%) scale(-0.1, 20);
+}
+
+.effect-smooth::before {
+  content: "Ajouter au panier";
+  color: #fff;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-transform: translateY(500%) scale(-0.1, 20);
+  transform: translateY(500%) scale(-0.1, 20);
+}
+
+.effect-smooth:hover::before {
+  letter-spacing: 0.05em;
+  -webkit-transform: translateY(0) scale(1, 1);
+  transform: translateY(0) scale(1, 1);
+}
