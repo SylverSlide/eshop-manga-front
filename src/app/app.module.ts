@@ -14,7 +14,7 @@ import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { ProductComponent } from './product/product.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ProductSheetComponent } from './product-sheet/product-sheet.component'; // Assurez-vous d'importer ReactiveFormsModule
+import { ProductSheetComponent } from './product-sheet/product-sheet.component';
 
 @NgModule({
   declarations: [
