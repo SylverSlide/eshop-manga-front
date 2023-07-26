@@ -9,11 +9,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  id: number;
   @Input() productName: string;
   @Input() productImageUrl: string;
   @Input() productPrice: number;
   @Input() isAvailableInStock: boolean;
+  @Input() id: number;
   productForm: FormGroup;
   quantity: number = 1;
 
@@ -24,13 +24,9 @@ export class ProductComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const param = this.route.snapshot.paramMap.get('id');
     this.productForm = this.fb.group({
       quantity: [this.quantity],
     });
-    if (param!!) {
-      this.id = +param;
-    }
   }
 
   addToCart() {

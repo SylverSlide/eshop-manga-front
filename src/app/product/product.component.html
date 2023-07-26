@@ -1,8 +1,11 @@
 <div class="page-inner">
     <div class="row">
         <div class="el-wrapper shadow">
+
             <div class="box-up">
-                <img class="img" [src]="productImageUrl" alt="box-4">
+                <a [routerLink]="['product', id]">
+                    <img class="img" [src]="productImageUrl" alt="box-4">
+                </a>
                 <div class="img-info">
                     <form [formGroup]="productForm">
                         <div class="info-inner">
@@ -13,11 +16,11 @@
                             <div *ngIf="!isAvailableInStock" class="text-danger">Out of stock</div>
 
                             <div *ngIf="isAvailableInStock" class="col quantity-input">
-                                <button mat-raised-button (click)="decrement()">-</button>
+                                <button mat-raised-button (click)="decrement()" class="me-2">-</button>
                                 <mat-form-field style="width:50px;">
                                     <input type="text" formControlName="quantity" class="form-control text-dark text-center" matInput>
                                 </mat-form-field>
-                                <button mat-raised-button (click)="increment()">+</button>
+                                <button mat-raised-button (click)="increment()" class="ms-2">+</button>
                             </div>
                         </div>
                     </form>
