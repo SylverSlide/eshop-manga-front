@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { CartService } from '../services/cart.service';

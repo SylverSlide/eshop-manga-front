@@ -1,13 +1,9 @@
 import { NgModule } from '@angular/core';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import { MatLegacyDialogModule as MatDialogModule } from '@angular/material/legacy-dialog';
 
 @NgModule({
-  exports: [
-    MatInputModule,
-    MatButtonModule,
-    MatDialogModule,
-  ]
+  exports: [MatInputModule, MatButtonModule, MatDialogModule],
 })
-export class MaterialModule { }
+export class MaterialModule {}
