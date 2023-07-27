@@ -76,9 +76,18 @@
           <li>Titre: Kingdoms of Conspiracy</li>
           <li>Composition: 24 boosters de 6 cartes</li>
         </ul>
-        <div class="row">
-          <div class="col-2">
-            <mat-form-field style="width: 50px" class="pt-2">
+        <div class="row mt-4">
+          <div class="col">
+            <button
+              [disabled]="productForm.value.quantity <= 1"
+              mat-raised-button
+              (click)="decrement()"
+              class="me-2"
+              style="height: 50px"
+            >
+              -
+            </button>
+            <mat-form-field style="width: 70px; height: 80px">
               <input
                 type="text"
                 formControlName="quantity"
@@ -86,29 +95,19 @@
                 matInput
               />
             </mat-form-field>
-          </div>
-          <div class="col mb-5">
-            <div class="row">
-              <div class="col">
-                <button
-                  [disabled]="productForm.value.quantity <= 1"
-                  mat-raised-button
-                  (click)="decrement()"
-                >
-                  -
-                </button>
-              </div>
-              <div class="row mt-2">
-                <div class="col">
-                  <button mat-raised-button (click)="increment()">+</button>
-                </div>
-              </div>
-            </div>
+            <button
+              style="height: 50px"
+              class="ms-2"
+              mat-raised-button
+              (click)="increment()"
+            >
+              +
+            </button>
           </div>
         </div>
 
-        <div class="row">
-          <div class="col text-center">
+        <div class="row mt-3">
+          <div class="col text-start">
             <button (click)="addToCart()" class="btn effect-smooth">
               <span>Ajouter au panier</span>
             </button>

@@ -1,0 +1,53 @@
+<div class="container">
+  <h1 mat-dialog-title class="mb-2 uppercase">Créer un compte</h1>
+  <div mat-dialog-content>
+    <form class="inscription-form">
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Nom</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field appearance="fill">
+            <mat-label>Prénom</mat-label>
+            <input matInput />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Confirmer mot de passe</mat-label>
+        <input matInput type="password" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Date de naissance</mat-label>
+        <input type="date" matInput />
+      </mat-form-field>
+
+      <mat-checkbox class="mt-3"
+        ><a style="text-decoration: none; color: black" href=""
+          >J'accepte les conditions d'utilisation</a
+        >
+      </mat-checkbox>
+    </form>
+  </div>
+  <div class="row justify-content-around mt-4">
+    <div class="col">
+      <button class="btn effect-smooth w-100">
+        <span>
+          <fa-icon class="me-3" [icon]="faUser"></fa-icon> Inscription</span
+        >
+      </button>
+    </div>
+  </div>
+</div>

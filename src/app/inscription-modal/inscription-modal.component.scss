@@ -1,12 +1,26 @@
-.my-carousel-image {
-  width: 600px; /* or whatever width you want */
-  height: 600px; /* or whatever height you want */
-  object-fit: contain; /* This property will make sure your image covers the whole area without distorting the aspect ratio */
+.inscription-form {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .forgot-password {
+    margin-top: 8px;
+    text-align: right;
+    a {
+      color: #666;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }
-
-fa-icon {
-  font-size: 3em;
-  color: black;
+h1 {
+  text-transform: uppercase;
+}
+.container {
+  padding: 25px;
+  overflow: hidden;
+  width: 550px;
 }
 .btn {
   letter-spacing: 0.1em;
@@ -14,7 +28,6 @@ fa-icon {
   font-size: 14px;
   font-weight: 400;
   line-height: 45px;
-  max-width: 200px;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;

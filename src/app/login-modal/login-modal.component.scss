@@ -1,15 +1,113 @@
 .login-form {
-    display: flex;
-    flex-direction: column;
-    .forgot-password {
-        margin-top: 8px;
-        text-align: right;
-        a {
-            color: #666;
-            text-decoration: none;
-            &:hover {
-                text-decoration: underline;
-            }
-        }
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .forgot-password {
+    margin-top: 8px;
+    text-align: right;
+    a {
+      color: #666;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
+  }
+}
+.container {
+  padding: 25px;
+  overflow: hidden;
+  width: 350px;
+}
+h1 {
+  text-transform: uppercase;
+}
+.btn {
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 45px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+}
+.btn:hover {
+  text-decoration: none;
+}
+
+/*btn_background*/
+.effect-smooth {
+  color: #fff;
+  border: 4px solid #000;
+  box-shadow: 0px 0px 0px 1px #000 inset;
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+}
+.effect-smooth:hover {
+  border: 4px solid #666;
+  background-color: #fff;
+  box-shadow: 0px 0px 0px 4px #eee inset;
+}
+
+/*btn_text*/
+.effect-smooth span {
+  transition: all 0.2s ease-out;
+  z-index: 2;
+}
+.effect-smooth:hover span {
+  letter-spacing: 0.13em;
+  color: #333;
+}
+
+/*highlight*/
+.effect-smooth:after {
+  background: #fff;
+  border: 0px solid #000;
+  content: "";
+  height: 155px;
+  left: -75px;
+  opacity: 0.8;
+  position: absolute;
+  top: -50px;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+  width: 50px;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); /*easeOutCirc*/
+  z-index: 1;
+}
+.effect-smooth:hover:after {
+  background: #fff;
+  border: 20px solid #000;
+  opacity: 0;
+  left: 120%;
+  -webkit-transform: rotate(40deg);
+  transform: rotate(40deg);
+}
+a {
+  color: #18272f;
+  position: relative;
+  text-decoration: none;
+}
+
+a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  border-radius: 4px;
+  background-color: #18272f;
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+a:hover::before {
+  transform-origin: left;
+  transform: scaleX(1);
 }

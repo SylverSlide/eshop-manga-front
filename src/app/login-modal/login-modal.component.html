@@ -1,33 +1,36 @@
 <div class="container">
-    <h1 mat-dialog-title>Login</h1>
-    <div mat-dialog-content>
-        <form class="login-form">
-            <mat-form-field appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput />
-            </mat-form-field>
+  <h1 mat-dialog-title>Déjà inscrit ?</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="loginForm" class="login-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
 
-            <mat-form-field appearance="fill">
-                <mat-label>Mot de passe</mat-label>
-                <input matInput type="password" />
-            </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" formControlName="password" />
+      </mat-form-field>
 
-            <div class="row justify-content-around">
-                <div class="col"><a href="#">Inscription</a></div>
-                <div class="col">
-                    <div class="forgot-password">
-                        <a href="#">Mot de passe oublié ?</a>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="row justify-content-around mt-4">
-        <div class="col text-start">
-            <button mat-button color="primary">Connexion</button>
+      <div class="row justify-content-around">
+        <div class="col">
+          <a href="#" (click)="afficherInscription()"> Inscription </a>
         </div>
-        <div class="col text-end">
-            <button mat-button mat-dialog-close>Annuler</button>
+        <div class="col">
+          <div class="forgot-password">
+            <a href="#">Mot de passe oublié ?</a>
+          </div>
         </div>
+      </div>
+    </form>
+  </div>
+  <div class="row justify-content-around mt-4">
+    <div class="col text-start">
+      <button class="btn effect-smooth" (click)="onSubmit()">
+        <span
+          ><fa-icon [icon]="faUserLock" class="me-2"></fa-icon> Connexion</span
+        >
+      </button>
     </div>
+  </div>
 </div>

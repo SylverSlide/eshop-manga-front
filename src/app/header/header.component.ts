@@ -37,8 +37,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    // N'oubliez pas de vous désabonner pour éviter les fuites de mémoire
     this.cartItemCountSubscription.unsubscribe();
+  }
+
+  isTokenInSession(): boolean {
+    const token = sessionStorage.getItem('token');
+    return !!token; // Renvoie true si le token est en session, sinon renvoie false.
   }
 
   openDialog() {

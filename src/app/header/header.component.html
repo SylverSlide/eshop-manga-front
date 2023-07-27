@@ -1,32 +1,32 @@
 <div id="blurry-filter"></div>
 <header>
-    <div class="header">
-        <a id="logo" [routerLink]="['']">
-            <img id="img-logo" src="assets/tokyo-cards-logo.png" alt="" />
-        </a>
-        <nav class="stroke">
-            <ul>
-                <li><a href="#">POKEMON</a></li>
-                <li><a href="#">ONE PIECE</a></li>
-                <li><a href="#">Dragon Ball Super</a></li>
-                <li><a href="#">Yu-Gi-Oh!</a></li>
-                <li><a href="#">Ultra Pro et Accessoires</a></li>
-            </ul>
-        </nav>
-        <div style="width:400px;margin-right:400px;" class="row">
-            <div id="icon col ">
-                <button class="btn btn-icon me-4">
-                <fa-icon [icon]="faBag"></fa-icon>
-                <span class="badge">{{ cartItemCount }}</span>
-                </button>
-                <button class="btn" (click)="openDialog()">
-                     <fa-icon [icon]="faUser"></fa-icon>
-                </button>
-                <div class="cart-popup" *ngIf="showPopup">
-                    Votre panier a été mis à jour !
-                </div>
-            </div>
-
+  <div class="header">
+    <a id="logo" [routerLink]="['']">
+      <img id="img-logo" src="assets/tokyo-cards-logo.png" alt="" />
+    </a>
+    <nav class="stroke">
+      <ul>
+        <li><a href="#">POKEMON</a></li>
+        <li><a href="#">ONE PIECE</a></li>
+        <li><a href="#">Dragon Ball Super</a></li>
+        <li><a href="#">Yu-Gi-Oh!</a></li>
+        <li><a href="#">Ultra Pro et Accessoires</a></li>
+      </ul>
+    </nav>
+    <div style="width: 100%">
+      <div id="icon">
+        <button class="btn btn-icon me-4">
+          <fa-icon [icon]="faBag"></fa-icon>
+          <span class="badge">{{ cartItemCount }}</span>
+        </button>
+        <a href="#" class="btn" *ngIf="isTokenInSession()">Mon compte</a>
+        <button class="btn" (click)="openDialog()" *ngIf="!isTokenInSession()">
+          <fa-icon [icon]="faUser"></fa-icon>
+        </button>
+        <div class="cart-popup" *ngIf="showPopup">
+          Votre panier a été mis à jour !
         </div>
+      </div>
     </div>
+  </div>
 </header>

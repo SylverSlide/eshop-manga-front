@@ -15,6 +15,8 @@ import { ProductComponent } from './product/product.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductSheetComponent } from './product-sheet/product-sheet.component';
+import { InscriptionModalComponent } from './inscription-modal/inscription-modal.component';
+import { HttpClientModule } from '@angular/common/http'; // N'oubliez pas cette importation
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { ProductSheetComponent } from './product-sheet/product-sheet.component';
     HeaderMobileComponent,
     ProductComponent,
     ProductSheetComponent,
+    InscriptionModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { ProductSheetComponent } from './product-sheet/product-sheet.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
