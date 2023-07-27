@@ -16,7 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductSheetComponent } from './product-sheet/product-sheet.component';
 import { InscriptionModalComponent } from './inscription-modal/inscription-modal.component';
-import { HttpClientModule } from '@angular/common/http'; // N'oubliez pas cette importation
+import { HttpClientModule } from '@angular/common/http';
+import { VerifyMailComponent } from './verify-mail/verify-mail.component'; // N'oubliez pas cette importation
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http'; // N'oubliez pas cette 
     ProductComponent,
     ProductSheetComponent,
     InscriptionModalComponent,
+    VerifyMailComponent,
   ],
   imports: [
     BrowserModule,
