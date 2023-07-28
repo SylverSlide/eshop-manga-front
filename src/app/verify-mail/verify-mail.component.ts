@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../services/authentication.service';
+import { faCheckCircle, faCancel } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-verify-mail',
@@ -7,20 +9,30 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./verify-mail.component.scss'],
 })
 export class VerifyMailComponent {
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  verificationStatus: 'verifying' | 'success' | 'failed' = 'verifying';
+  faCheck = faCheckCircle;
+  faCancel = faCancel;
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthService
+  ) {}
 
   ngOnInit() {
-    // Récupérer le token de vérification d'e-mail depuis les paramètres de l'URL
-    this.route.queryParams.subscribe((params: any) => {
-      const token = params['token'];
-
+    this.route.paramMap.subscribe((params) => {
+      const token = params.get('token');
+      console.log('token-> ', token);
       if (token) {
-        // Stocker le token JWT dans le sessionStorage
-        sessionStorage.setItem('token', token);
-
-        // Appeler la méthode de vérification de l'e-mail
+        this.authService.verifyEmail(token).subscribe(
+          () => {
+            this.verificationStatus = 'success';
+          },
+          (error) => {
+            this.verificationStatus = 'failed';
+          }
+        );
       } else {
-        this.router.navigate(['/']);
+        this.verificationStatus = 'failed';
       }
     });
   }

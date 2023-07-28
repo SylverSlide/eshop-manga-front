@@ -1,1 +1,36 @@
-<p>verify-mail works!</p>
+<div class="container">
+  <mat-card class="verification-container">
+    <ng-container
+      *ngIf="verificationStatus === 'verifying'; else successOrFailed"
+    >
+      <mat-card-content>
+        <div class="spinner-container">
+          <mat-spinner></mat-spinner>
+        </div>
+        <p class="verification-text">
+          Veuillez patienter pendant que nous vérifions votre adresse e-mail...
+        </p>
+      </mat-card-content>
+    </ng-container>
+
+    <ng-template #successOrFailed>
+      <mat-card-content class="text-center">
+        <ng-container
+          *ngIf="verificationStatus === 'success'; else verificationFailed"
+        >
+          <p class="verification-text"></p>
+          Votre adresse e-mail a été vérifiée avec succès ! Vous pouvez
+          maintenant vous connecter. <br />
+          <fa-icon [icon]="faCheck"></fa-icon>
+        </ng-container>
+        <ng-template #verificationFailed>
+          <p class="verification-text">
+            La vérification de votre adresse e-mail a échoué. Veuillez réessayer
+            plus tard. <br />
+            <fa-icon [icon]="faCancel"></fa-icon>
+          </p>
+        </ng-template>
+      </mat-card-content>
+    </ng-template>
+  </mat-card>
+</div>

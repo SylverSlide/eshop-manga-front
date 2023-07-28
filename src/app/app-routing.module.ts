@@ -8,7 +8,7 @@ import { VerifyMailComponent } from './verify-mail/verify-mail.component';
 
 const routes: Routes = [
   {
-    path: 'verify-email',
+    path: 'verify-email/:token',
     component: VerifyMailComponent,
   },
   { path: 'product/:id', component: ProductSheetComponent },

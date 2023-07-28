@@ -14,4 +14,9 @@ export class AuthService {
     const body = { email, password };
     return this.http.post(`${this.apiUrl}/login`, body);
   }
+
+  verifyEmail(token: string): Observable<any> {
+    const url = `${this.apiUrl}/email/verify/${token}`;
+    return this.http.get(url);
+  }
 }
