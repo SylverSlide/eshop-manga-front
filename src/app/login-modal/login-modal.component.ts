@@ -47,7 +47,6 @@ export class LoginModalComponent implements OnInit {
         const token = response.token;
         this.dialog.closeAll();
         sessionStorage.setItem('token', token);
-        // L'utilisateur est maintenant connecté, setUser() n'est plus nécessaire ici.
         this.router.navigate(['']);
       },
       (error) => {
@@ -57,16 +56,16 @@ export class LoginModalComponent implements OnInit {
     );
   }
 
-  afficherInscription(): void {
+  afficherInscription(event: Event): void {
+    event: Event;
+    event.preventDefault();
     // Fermer le MatDialog actuel
     this.dialogRef.close();
 
     // Ouvrir un nouveau MatDialog avec le composant InscriptionComponent
-    const dialogRef = this.dialog.open(InscriptionModalComponent);
+    const dialogInscription = this.dialog.open(InscriptionModalComponent);
 
     // Vous pouvez ajouter des gestionnaires d'événements ici si nécessaire
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log("Dialog d'inscription fermée");
-    });
+    dialogInscription.afterClosed().subscribe((result) => {});
   }
 }
