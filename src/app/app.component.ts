@@ -24,7 +24,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.headerService.showAdminHeader$.subscribe((showHeader) => {
       this.showAdminHeader = showHeader;
-      console.log('appComponent showAdminHeader =>', this.showAdminHeader);
 
       // Déclencher manuellement le cycle de détection après la mise à jour de la propriété
       this.cdr.detectChanges();

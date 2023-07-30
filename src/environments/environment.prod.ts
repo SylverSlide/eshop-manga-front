@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://backend.ldtraining.fr/api',
+  apiUrl: 'https://backend.ldtraining.fr/api',
 };

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { CartService } from '../services/cart.service';
@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../services/authentication.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { User } from '../models/user.model';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +28,9 @@ export class HeaderComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -36,8 +39,6 @@ export class HeaderComponent implements OnInit {
         this.cartItemCount = count;
       }
     );
-
-    this.getUserDetails();
 
     this.cartService.getShowPopup().subscribe((show) => {
       this.showPopup = show;
@@ -50,43 +51,15 @@ export class HeaderComponent implements OnInit {
   }
 
   getName(): string {
-    const name = this.userDetails?.name;
-
-    if (name) {
-      return name;
-    }
-
-    return '';
+    return this.userService.getUser()?.name ?? '';
   }
   getRole(): string {
-    const role = this.userDetails?.role;
-
-    if (role) {
-      return role;
-    }
-
-    return '';
+    return this.userService.getUser()?.role ?? '';
   }
 
   getFirstName(): string {
-    const firstname = this.userDetails?.firstname;
-
-    if (firstname) {
-      return firstname.charAt(0).toUpperCase();
-    }
-
-    return '';
-  }
-
-  getUserDetails() {
-    this.authService.getUserDetails().subscribe(
-      (data) => {
-        this.userDetails = data.user;
-      },
-      (error) => {
-        // Handle errors here
-      }
-    );
+    const firstname = this.userService.getUser()?.firstname;
+    return firstname ? firstname.charAt(0).toUpperCase() : '';
   }
 
   openSidenav(sidenav: MatSidenav): void {

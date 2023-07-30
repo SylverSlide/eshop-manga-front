@@ -23,7 +23,6 @@ export class VerifyMailComponent {
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
       const token = params.get('token');
-      console.log('token-> ', token);
       if (token) {
         this.authService.verifyEmail(token).subscribe(
           () => {

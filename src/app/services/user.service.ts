@@ -8,7 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class UserService {
   private userSubject: BehaviorSubject<User | null> =
     new BehaviorSubject<User | null>(null);
-  public user: Observable<User | null> = this.userSubject.asObservable();
+
   constructor() {}
 
   setUser(user: User | null): void {

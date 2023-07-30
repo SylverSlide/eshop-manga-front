@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { UserService } from './user.service';
 import { User } from '../models/user.model';
@@ -11,15 +11,25 @@ import { LoginResponse } from '../models/login-response';
 })
 export class AuthService {
   private apiUrl = `${environment.apiUrl}`;
+  private currentUserSubject: BehaviorSubject<User | null>;
 
-  constructor(private http: HttpClient, private userService: UserService) {}
+  constructor(private http: HttpClient, private userService: UserService) {
+    const storedUser = sessionStorage.getItem('user');
+    this.currentUserSubject = new BehaviorSubject<User | null>(
+      storedUser ? JSON.parse(storedUser) : null
+    );
+  }
+
+  get currentUserValue(): User | null {
+    return this.currentUserSubject.getValue();
+  }
 
   login(email: string, password: string): Observable<any> {
     const body = { email, password };
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, body).pipe(
       tap((response) => {
-        console.log('response', response.user);
-        this.userService.setUser(response.user);
+        this.currentUserSubject.next(response.user);
+        sessionStorage.setItem('user', JSON.stringify(response.user));
       })
     );
   }
@@ -40,6 +50,7 @@ export class AuthService {
   private clearToken(): void {
     sessionStorage.removeItem('user');
     sessionStorage.removeItem('token');
+    this.currentUserSubject.next(null);
   }
 
   getUserDetails(): Observable<any> {

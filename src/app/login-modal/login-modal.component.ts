@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { InscriptionModalComponent } from '../inscription-modal/inscription-modal.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { faUserLock } from '@fortawesome/free-solid-svg-icons';
@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/authentication.service';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { LoginResponse } from '../models/login-response';
 
 @Component({
   selector: 'app-login-modal',
@@ -23,7 +24,8 @@ export class LoginModalComponent implements OnInit {
     private userService: UserService,
     public dialogRef: MatDialogRef<InscriptionModalComponent>,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -32,7 +34,6 @@ export class LoginModalComponent implements OnInit {
       password: ['', Validators.required],
     });
   }
-
   onSubmit() {
     if (this.loginForm.invalid) {
       this.errorMessage = 'Veuillez remplir tous les champs du formulaire.';
@@ -42,11 +43,11 @@ export class LoginModalComponent implements OnInit {
     const { email, password } = this.loginForm.value;
 
     this.authService.login(email, password).subscribe(
-      (response) => {
+      (response: LoginResponse) => {
         const token = response.token;
         this.dialog.closeAll();
         sessionStorage.setItem('token', token);
-        this.userService.setUser(response.user);
+        // L'utilisateur est maintenant connecté, setUser() n'est plus nécessaire ici.
         this.router.navigate(['']);
       },
       (error) => {
