@@ -1,6 +1,11 @@
-<app-header *ngIf="!isMobile"></app-header>
-<app-header-mobile *ngIf="isMobile"></app-header-mobile>
-<div class="main">
-    <router-outlet></router-outlet>
-</div>
+<app-header *ngIf="!isMobile && !showAdminHeader"></app-header>
+
+<app-header-admin *ngIf="showAdminHeader "></app-header-admin>
+
+<app-header-mobile *ngIf="isMobile && !showAdminHeader"></app-header-mobile>
+<router-outlet>
+    <div class="main">
+        <!-- Le contenu des routes sera rendu ici -->
+    </div>
+</router-outlet>
 <app-footer></app-footer>

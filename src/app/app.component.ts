@@ -1,15 +1,34 @@
-import { Component, HostListener } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  HostListener,
+  OnInit,
+} from '@angular/core';
+import { HeaderService } from './services/header.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isMobile: boolean;
+  showAdminHeader: boolean = false;
 
-  constructor() {
+  constructor(
+    private headerService: HeaderService,
+    private cdr: ChangeDetectorRef
+  ) {
     this.isMobile = window.innerWidth < 1200;
+  }
+  ngOnInit(): void {
+    this.headerService.showAdminHeader$.subscribe((showHeader) => {
+      this.showAdminHeader = showHeader;
+      console.log('appComponent showAdminHeader =>', this.showAdminHeader);
+
+      // Déclencher manuellement le cycle de détection après la mise à jour de la propriété
+      this.cdr.detectChanges();
+    });
   }
 
   @HostListener('window:resize', ['$event'])

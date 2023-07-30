@@ -5,6 +5,7 @@ import { HeaderMobileComponent } from './header-mobile/header-mobile.component';
 import { ProductSheetComponent } from './product-sheet/product-sheet.component';
 import { AuthGuard } from './auth.guard';
 import { VerifyMailComponent } from './verify-mail/verify-mail.component';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   {

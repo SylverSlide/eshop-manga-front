@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/authentication.service';
 import { faCheckCircle, faCancel } from '@fortawesome/free-solid-svg-icons';
+import { LoginModalComponent } from '../login-modal/login-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-verify-mail',
@@ -14,8 +16,8 @@ export class VerifyMailComponent {
   faCancel = faCancel;
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class VerifyMailComponent {
         this.authService.verifyEmail(token).subscribe(
           () => {
             this.verificationStatus = 'success';
+            this.openLoginModal();
           },
           (error) => {
             this.verificationStatus = 'failed';
@@ -35,5 +38,9 @@ export class VerifyMailComponent {
         this.verificationStatus = 'failed';
       }
     });
+  }
+
+  openLoginModal(): void {
+    this.dialog.open(LoginModalComponent);
   }
 }

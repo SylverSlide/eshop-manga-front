@@ -5,6 +5,7 @@ import { faUserLock } from '@fortawesome/free-solid-svg-icons';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/authentication.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login-modal',
@@ -14,11 +15,15 @@ import { Router } from '@angular/router';
 export class LoginModalComponent implements OnInit {
   faUserLock = faUserLock;
   loginForm: FormGroup;
+  errorMessage: string;
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private userService: UserService,
     public dialogRef: MatDialogRef<InscriptionModalComponent>,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -30,6 +35,7 @@ export class LoginModalComponent implements OnInit {
 
   onSubmit() {
     if (this.loginForm.invalid) {
+      this.errorMessage = 'Veuillez remplir tous les champs du formulaire.';
       return;
     }
 
@@ -40,9 +46,12 @@ export class LoginModalComponent implements OnInit {
         const token = response.token;
         this.dialog.closeAll();
         sessionStorage.setItem('token', token);
+        this.userService.setUser(response.user);
+        this.router.navigate(['']);
       },
       (error) => {
-        console.error('Erreur de connexion', error);
+        this.errorMessage =
+          'Adresse e-mail ou mot de passe incorrect. Veuillez réessayer.';
       }
     );
   }

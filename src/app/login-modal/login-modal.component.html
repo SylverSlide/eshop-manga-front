@@ -1,36 +1,42 @@
 <div class="container">
-  <h1 mat-dialog-title>Déjà inscrit ?</h1>
-  <div mat-dialog-content>
-    <form [formGroup]="loginForm" class="login-form">
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" />
-      </mat-form-field>
+    <h1 mat-dialog-title>Déjà inscrit ?</h1>
+    <div mat-dialog-content>
+        <form [formGroup]="loginForm" class="login-form">
+            <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" />
+                <mat-error *ngIf="loginForm.get('email')?.hasError('required')">Email requis.</mat-error>
+            </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Mot de passe</mat-label>
-        <input matInput type="password" formControlName="password" />
-      </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Mot de passe</mat-label>
+                <input matInput type="password" formControlName="password" />
+                <mat-error *ngIf="loginForm.get('password')?.hasError('required')">Mot de passe requis.</mat-error>
+            </mat-form-field>
 
-      <div class="row justify-content-around">
-        <div class="col">
-          <a href="#" (click)="afficherInscription()"> Inscription </a>
-        </div>
-        <div class="col">
-          <div class="forgot-password">
-            <a href="#">Mot de passe oublié ?</a>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="row justify-content-around mt-4">
-    <div class="col text-start">
-      <button class="btn effect-smooth" (click)="onSubmit()">
+            <div *ngIf="errorMessage" warning class="error-message mt-3 mb-3">
+                {{ errorMessage }}
+            </div>
+
+            <div class="row justify-content-around">
+                <div class="col">
+                    <a href="#" (click)="afficherInscription()"> Inscription </a>
+                </div>
+                <div class="col">
+                    <div class="forgot-password">
+                        <a href="#">Mot de passe oublié ?</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row justify-content-around mt-4">
+        <div class="col text-start">
+            <button class="btn effect-smooth" (click)="onSubmit()" [disabled]="loginForm.get('email')?.value === '' || loginForm.get('password')?.value === ''">
         <span
           ><fa-icon [icon]="faUserLock" class="me-2"></fa-icon> Connexion</span
         >
       </button>
+        </div>
     </div>
-  </div>
 </div>

@@ -16,9 +16,14 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProductSheetComponent } from './product-sheet/product-sheet.component';
 import { InscriptionModalComponent } from './inscription-modal/inscription-modal.component';
-import { HttpClientModule } from '@angular/common/http';
-import { VerifyMailComponent } from './verify-mail/verify-mail.component'; // N'oubliez pas cette importation
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { VerifyMailComponent } from './verify-mail/verify-mail.component';
+import { AuthInterceptor } from './auth-interceptor.interceptor';
+import { AdminComponent } from './admin/admin.component';
+import { AdminModule } from './admin/admin.module';
+import { AdminRoutingModule } from './admin/admin-routing.modules';
+import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
+import { CoreUIlModule } from './admin/coreui/coreui.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +36,8 @@ import { VerifyMailComponent } from './verify-mail/verify-mail.component'; // N'
     ProductSheetComponent,
     InscriptionModalComponent,
     VerifyMailComponent,
+    AdminComponent,
+    HeaderAdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,8 +48,13 @@ import { VerifyMailComponent } from './verify-mail/verify-mail.component'; // N'
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AdminModule,
+    AdminRoutingModule,
+    CoreUIlModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
