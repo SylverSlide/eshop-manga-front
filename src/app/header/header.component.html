@@ -1,10 +1,12 @@
 <div id="blurry-filter"></div>
 <header>
     <div class="header">
-        <a id="logo" [routerLink]="['']">
-            <img id="img-logo" src="assets/tokyo-cards-logo.png" alt="" />
-        </a>
-        <nav class="stroke">
+        <div style="width:30%" class="block-logo">
+            <a id="logo bg-red" [routerLink]="['']">
+                <img id="img-logo" src="assets/tokyo-cards-logo.png" alt="" />
+            </a>
+        </div>
+        <nav class="stroke me-2">
             <ul>
                 <li><a href="#">POKEMON</a></li>
                 <li><a href="#">ONE PIECE</a></li>
@@ -13,14 +15,14 @@
                 <li><a href="#">Ultra Pro et Accessoires</a></li>
             </ul>
         </nav>
-        <div class="cart">
+        <div style="width:10%" class="cart ">
             <button class="button-5 me-5">
           <fa-icon class="me-3" [icon]="faBag"></fa-icon> 8,80€
           <span class="badge">{{ cartItemCount }}</span>
         </button>
         </div>
 
-        <div style="width: 10% ;" class="block-logo text-start me-5">
+        <div style="width: 5% ;" class="block-logo text-start ms-2 me-5">
             <div id="icon">
 
                 <button class="button-17" *ngIf="isTokenInSession()" [matMenuTriggerFor]="menu" role="button">{{getFirstName()}} . {{getName() }} </button>

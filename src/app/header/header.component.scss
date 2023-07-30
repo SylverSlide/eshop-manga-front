@@ -59,9 +59,10 @@ header>.header {
 }
 
 nav ul {
-    width: 100%;
+    width: 95%;
     list-style: none;
-    text-align: center;
+    text-align: left;
+    margin-left: -35px;
 }
 
 nav ul li {
@@ -69,7 +70,7 @@ nav ul li {
 }
 
 nav ul li a {
-    font-size: 1em;
+    font-size: 0.9em;
     display: block;
     padding: 15px;
     text-decoration: none;
