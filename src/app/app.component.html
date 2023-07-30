@@ -3,9 +3,9 @@
 <app-header-admin *ngIf="showAdminHeader "></app-header-admin>
 
 <app-header-mobile *ngIf="isMobile && !showAdminHeader"></app-header-mobile>
-<router-outlet>
-    <div class="main">
+<div class="main">
+    <router-outlet>
         <!-- Le contenu des routes sera rendu ici -->
-    </div>
-</router-outlet>
+    </router-outlet>
+</div>
 <app-footer></app-footer>

@@ -18,7 +18,7 @@ export class CartService {
 
   addItemToCart() {
     this.cartItemCountSubject.next(this.cartItemCountSubject.value + 1);
-    this.showPopupSubject.next(true); // Afficher la pop-up
+    this.showPopupSubject.next(true);
   }
 
   getCartItemCount(): Observable<number> {

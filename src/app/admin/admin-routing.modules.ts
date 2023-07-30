@@ -5,15 +5,17 @@ import { ManageProductComponent } from './manage-product/manage-product.componen
 import { ManageOrdersComponent } from './manage-orders/manage-orders.component';
 import { ManageOrderProductsComponent } from './manage-order-products/manage-order-products.component';
 import { AdminComponent } from './admin.component';
+import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const adminRoutes: Routes = [
   {
     path: 'admin',
     canActivate: [AdminGuard],
-    component: AdminComponent,
+    component: DashboardComponent,
     children: [
       { path: 'manage-product', component: ManageProductComponent },
-      { path: 'manage-categories', component: ManageProductComponent },
+      { path: 'manage-categories', component: ManageCategoriesComponent },
       { path: 'manage-orders', component: ManageOrdersComponent },
       {
         path: 'manage-order-products',

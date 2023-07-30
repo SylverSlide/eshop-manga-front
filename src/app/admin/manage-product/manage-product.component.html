@@ -1,1 +1,55 @@
-<p>manage-product works!</p>
+<div class="container">
+    <mat-tab-group dynamicHeight>
+        <mat-tab label="Listes des Produits">
+            <div class="example-small-box mat-elevation-z4">
+                Small content
+            </div>
+        </mat-tab>
+        <mat-tab label="Ajouter un Produit">
+            <div class="row">
+                <div class="col-8 mx-auto mt-5">
+                    <form (submit)="onSubmit()">
+                        <mat-form-field>
+                            <mat-label>Nom :</mat-label>
+                            <input matInput type="text" [(ngModel)]="product.name" name="name" />
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Prix :</mat-label>
+                            <input matInput type="number" [(ngModel)]="product.price" name="price" />
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Description :</mat-label>
+                            <textarea matInput [(ngModel)]="product.description" name="description"></textarea>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Catégorie :</mat-label>
+                            <mat-select [(ngModel)]="product.categoryId" name="category">
+                                <!-- Options pour les catégories -->
+                                <mat-option *ngFor="let category of categories" [value]="category.id">
+                                    {{ category.name }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <label for="coverImage">Image de Couverture : </label> <br>
+                        <input class="mt-2" type="file" (change)="onFileUploaded($event)" name="coverImage" />
+
+
+                        <div class="row mt-5">
+                            <div class="col">
+                                <p for="coverImage">Autres images : </p>
+
+                                <app-file-upload (uploadedFilePaths)="onFileUploaded($event)"></app-file-upload>
+                            </div>
+                        </div>
+
+                        <button class="w-100 mt-5" mat-raised-button color="primary" type="submit">Créer le produit</button>
+                    </form>
+
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>
