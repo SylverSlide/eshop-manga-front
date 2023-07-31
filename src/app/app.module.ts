@@ -24,6 +24,7 @@ import { AdminModule } from './admin/admin.module';
 import { AdminRoutingModule } from './admin/admin-routing.modules';
 import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
 import { CoreUIlModule } from './admin/coreui/coreui.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,7 @@ import { CoreUIlModule } from './admin/coreui/coreui.module';
     AdminModule,
     AdminRoutingModule,
     CoreUIlModule,
+    NgbModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

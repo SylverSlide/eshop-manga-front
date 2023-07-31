@@ -1,4 +1,10 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { CartService } from '../services/cart.service';
@@ -8,6 +14,7 @@ import { AuthService } from '../services/authentication.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
+import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +22,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  closeResult: string;
   faBag = faCartShopping;
   faUser = faUser;
   cartItemCount: number = 0;
@@ -25,12 +33,14 @@ export class HeaderComponent implements OnInit {
   private sidenav: MatSidenav;
   private cartItemCountSubscription: Subscription;
 
+  @ViewChild('offCanvasContent') offcanvasContent: TemplateRef<any>;
+
   constructor(
     private dialog: MatDialog,
     private cartService: CartService,
     private authService: AuthService,
     private userService: UserService,
-    private cdr: ChangeDetectorRef
+    private offcanvasService: NgbOffcanvas
   ) {}
 
   ngOnInit(): void {
@@ -41,13 +51,20 @@ export class HeaderComponent implements OnInit {
     );
 
     this.cartService.getShowPopup().subscribe((show) => {
-      this.showPopup = show;
       if (show) {
-        setTimeout(() => {
-          this.showPopup = false;
-        }, 3000);
       }
     });
+  }
+
+  openOffcanvas(content: TemplateRef<any>) {
+    this.offcanvasService.open(content, {
+      scroll: true,
+      position: 'end',
+    });
+  }
+
+  closeOffcanvas() {
+    this.offcanvasService.dismiss();
   }
 
   getName(): string {
