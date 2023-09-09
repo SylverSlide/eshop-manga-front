@@ -7,4 +7,5 @@ export class Product {
   coverImage: string;
   otherImages: string[];
   categoryId: number;
+  isAvailableInStock?: boolean = true;
 }

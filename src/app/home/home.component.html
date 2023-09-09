@@ -1,25 +1,9 @@
 <div class="container">
 
     <p class="text-center title">Nos articles du moment</p>
-    <div class="row mt-5">
+    <div class="row mt-5" *ngFor="let product of products">
         <div class="col">
-            <app-product [productName]="'One Piece Card Game OP-04'" [productImageUrl]="'assets/box-op-4.png'" [productPrice]="10000" [isAvailableInStock]="true" [id]="1"></app-product>
-        </div>
-        <div class="col">
-            <app-product [productName]="'One Piece Card Game OP-03'" [productImageUrl]="'assets/box-op-3.png'" [productPrice]="10000" [isAvailableInStock]="false" [id]="2"></app-product>
-
-        </div>
-        <div class="col">
-            <app-product [productName]="'One Piece Card Game OP-02'" [productImageUrl]="'assets/box-op-2.png'" [productPrice]="10000" [isAvailableInStock]="true" [id]="3"></app-product>
-        </div>
-    </div>
-    <div class="row mt-5">
-        <div class="col">
-            <app-product [productName]="'One Piece Card Game OP-01'" [productImageUrl]="'assets/box-op-1.png'" [productPrice]="10000" [isAvailableInStock]="true" [id]="4"></app-product>
-        </div>
-        <div class="col">
-            <app-product [productName]="'Lot de 6 cartes One Piece'" [productImageUrl]="'assets/image_example.png'" [productPrice]="15000" [isAvailableInStock]="false" [id]="5"></app-product>
-
+            <app-product [productName]="product.name!!" [productImageUrl]="product.coverImage!!" [productPrice]="product.price!!" [isAvailableInStock]="product.isAvailableInStock!!" [id]="product.id!!"></app-product>
         </div>
     </div>
 </div>

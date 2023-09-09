@@ -21,6 +21,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1;
+    font-size: 1.2em;
 }
 
 #logo {
@@ -28,7 +29,7 @@ header {
 }
 
 #img-logo {
-    width: 50%;
+    width: 95%;
 }
 
 fa-icon {
@@ -223,7 +224,7 @@ nav ul li {
 .button-5 {
     align-items: center;
     background-clip: padding-box;
-    background-color: #fa6400;
+    background-color: black;
     border: 1px solid transparent;
     border-radius: .25rem;
     box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;

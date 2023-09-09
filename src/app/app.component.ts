@@ -25,7 +25,6 @@ export class AppComponent implements OnInit {
     this.headerService.showAdminHeader$.subscribe((showHeader) => {
       this.showAdminHeader = showHeader;
 
-      // Déclencher manuellement le cycle de détection après la mise à jour de la propriété
       this.cdr.detectChanges();
     });
   }

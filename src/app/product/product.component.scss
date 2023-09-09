@@ -47,7 +47,8 @@ body {
 }
 
 img {
-    width: 50%;
+    width: 95%;
+    object-fit: contain;
 }
 
 .el-wrapper:hover .img {

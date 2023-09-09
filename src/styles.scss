@@ -21,8 +21,8 @@ $tokyo-cards-front-theme: mat.define-light-theme( ( color: ( primary: $tokyo-car
 // that you are using.
 @include mat.all-component-themes($tokyo-cards-front-theme);
 @font-face {
-    font-family: "recoleta";
-    src: url("./assets/font/Recoleta_Font/recoleta-regulardemo.otf") format("truetype");
+    font-family: "Roboto";
+    src: url("./assets/font/Roboto/Roboto-Medium.ttf") format("truetype");
 }
 
 :root {
@@ -42,7 +42,10 @@ body {
 
 body {
     margin: 0;
-    font-family: "Helvetica Neue", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
+
+
 /* Importing Bootstrap SCSS file. */
+
 @import 'bootstrap/scss/bootstrap';
