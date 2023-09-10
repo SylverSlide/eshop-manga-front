@@ -57,9 +57,13 @@ export class HeaderComponent implements OnInit {
 
     this.cartService.getShowPopup().subscribe((show) => {
       if (show) {
+        this.openOffcanvas(this.offcanvasContent);
+
+        setTimeout(() => {
+          this.closeOffcanvas();
+        }, 1500);
       }
     });
-    console.log(this.cartService.getCarts());
   }
 
   incrementQuantity(item: { product: Product; quantity: number }) {
