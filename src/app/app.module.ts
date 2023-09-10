@@ -25,6 +25,7 @@ import { AdminRoutingModule } from './admin/admin-routing.modules';
 import { HeaderAdminComponent } from './admin/header-admin/header-admin.component';
 import { CoreUIlModule } from './admin/coreui/coreui.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPayPalModule } from 'ngx-paypal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +54,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AdminRoutingModule,
     CoreUIlModule,
     NgbModule,
+    NgxPayPalModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
