@@ -95,7 +95,7 @@ export class HomeComponent implements OnInit {
         updatedProduct.price = product.price;
         updatedProduct.stockQuantity = product.stock_quantity;
         updatedProduct.coverImage = product.image_path;
-        updatedProduct.categoryId = product.categoryId;
+        updatedProduct.category = product.category;
 
         if (product.stock_quantity!! <= 0) {
           updatedProduct.isAvailableInStock = false;

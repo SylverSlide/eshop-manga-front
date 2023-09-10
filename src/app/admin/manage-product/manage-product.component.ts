@@ -14,17 +14,8 @@ export class ManageProductComponent implements OnInit {
   coverImage: File;
   otherImages: File[] = [];
   categories: Category[] = [];
-
-  product: Product = {
-    id: 0,
-    name: '',
-    description: '',
-    price: 0,
-    stockQuantity: 0,
-    coverImage: '',
-    otherImages: [],
-    categoryId: 0,
-  };
+  category: Category;
+  product: Product;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -78,7 +69,7 @@ export class ManageProductComponent implements OnInit {
           stockQuantity: 0,
           coverImage: '',
           otherImages: [],
-          categoryId: 0,
+          category: this.category,
         };
         this.product.coverImage = '';
         this.product.otherImages = [];

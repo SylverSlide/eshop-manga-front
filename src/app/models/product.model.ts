@@ -1,3 +1,5 @@
+import { Category } from './category.model';
+
 export class Product {
   id: number;
   name: string;
@@ -6,6 +8,6 @@ export class Product {
   stockQuantity: number;
   coverImage: string;
   otherImages: string[];
-  categoryId: number;
+  category: Category;
   isAvailableInStock?: boolean = true;
 }
