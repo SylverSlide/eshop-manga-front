@@ -3,39 +3,39 @@
         <div class="el-wrapper shadow">
 
             <div class="box-up">
-                <a [routerLink]="['product', id]">
-                    <img class="img" [src]="productImageUrl" alt="box-4">
+                <a [routerLink]="['product', product.id]">
+                    <img class="img" [src]="product.coverImage" alt="box-4">
                 </a>
                 <div class="img-info">
                     <form [formGroup]="productForm">
                         <div class="info-inner">
-                            <span class="p-name">{{productName}}</span>
+                            <span class="p-name">{{product.name}}</span>
                         </div>
                         <div class="row a-size">
-                            <div *ngIf="isAvailableInStock" class="text-success">Disponibles en Stock</div>
-                            <div *ngIf="!isAvailableInStock" class="text-danger">Out of stock</div>
+                            <div *ngIf="product.isAvailableInStock" class="text-success">Disponibles en Stock</div>
+                            <div *ngIf="product!isAvailableInStock" class="text-danger">Out of stock</div>
 
-                            <div *ngIf="isAvailableInStock" class="col quantity-input">
-                                <button mat-raised-button (click)="decrement()" class="me-2">-</button>
-                                <mat-form-field style="width:50px;">
+                            <div *ngIf="product.isAvailableInStock" class="col quantity-input">
+                                <button style="height:50px;" mat-raised-button (click)="decrement()" class="me-2">-</button>
+                                <mat-form-field style="width:50px; heigth:80px;">
                                     <input type="text" formControlName="quantity" class="form-control text-dark text-center" matInput>
                                 </mat-form-field>
-                                <button mat-raised-button (click)="increment()" class="ms-2">+</button>
+                                <button style="height:50px;" mat-raised-button (click)=" increment() " class="ms-2 ">+</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
 
-            <div class="box-down">
-                <div class="h-bg">
-                    <div class="h-bg-inner"></div>
+            <div class="box-down ">
+                <div class="h-bg ">
+                    <div class="h-bg-inner "></div>
                 </div>
 
-                <a class="cart" href="#" (click)="addToCart()">
-                    <span class="price">{{productPrice}} EUR</span>
-                    <span class="add-to-cart">
-              <span class="txt">Ajouter au panier</span>
+                <a class="cart " href="# " (click)="addToCart(product) ">
+                    <span class="price ">{{product.price}} EUR</span>
+                    <span class="add-to-cart ">
+              <span class="txt ">Ajouter au panier</span>
                     </span>
                 </a>
             </div>

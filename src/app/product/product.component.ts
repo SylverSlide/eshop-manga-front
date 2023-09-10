@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-product',
@@ -9,11 +10,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
-  @Input() productName: string;
-  @Input() productImageUrl: string;
-  @Input() productPrice: number;
-  @Input() isAvailableInStock: boolean;
-  @Input() id: number;
+  @Input() product: Product;
+
   productForm: FormGroup;
   quantity: number = 1;
 
@@ -29,8 +27,8 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  addToCart() {
-    this.cartService.addItemToCart();
+  addToCart(product: Product) {
+    this.cartService.addItemToCart(product);
   }
 
   increment() {

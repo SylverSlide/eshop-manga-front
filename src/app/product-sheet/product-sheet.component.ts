@@ -83,8 +83,8 @@ export class ProductSheetComponent implements OnInit {
     });
   }
 
-  addToCart() {
-    this.cartService.addItemToCart();
+  addToCart(product: Product) {
+    this.cartService.addItemToCart(product);
   }
 
   increment() {

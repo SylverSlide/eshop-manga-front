@@ -15,6 +15,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
 import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-header',
@@ -29,7 +30,7 @@ export class HeaderComponent implements OnInit {
   showPopup: boolean = false;
   userDetails: User;
   firstname: string;
-
+  cartItems: { product: Product; quantity: number }[] = [];
   private sidenav: MatSidenav;
   private cartItemCountSubscription: Subscription;
 
@@ -44,6 +45,10 @@ export class HeaderComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.cartService.cartItems$.subscribe((items) => {
+      this.cartItems = items;
+    });
+
     this.cartItemCountSubscription = this.cartService.cartItemCount.subscribe(
       (count) => {
         this.cartItemCount = count;
@@ -54,6 +59,23 @@ export class HeaderComponent implements OnInit {
       if (show) {
       }
     });
+    console.log(this.cartService.getCarts());
+  }
+
+  incrementQuantity(item: { product: Product; quantity: number }) {
+    item.quantity++;
+    this.cartService.cartItemsSubject.next([...this.cartItems]);
+  }
+
+  decrementQuantity(item: { product: Product; quantity: number }) {
+    if (item.quantity > 1) {
+      item.quantity--;
+      this.cartService.cartItemsSubject.next([...this.cartItems]);
+    }
+  }
+
+  removeFromCart(productId: number) {
+    this.cartService.removeItemFromCart(productId);
   }
 
   openOffcanvas(content: TemplateRef<any>) {

@@ -3,22 +3,47 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Cart } from '../models/cart.model';
 import { HttpClient } from '@angular/common/http';
+import { Product } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private cartItemCountSubject = new BehaviorSubject<number>(0);
+  cartItemCountSubject = new BehaviorSubject<number>(0);
   private showPopupSubject = new BehaviorSubject<boolean>(false);
   private apiUrl = `${environment.apiUrl}/carts`;
+  cartItemsSubject = new BehaviorSubject<
+    { product: Product; quantity: number }[]
+  >([]);
+  cartItems$ = this.cartItemsSubject.asObservable();
 
   cartItemCount = this.cartItemCountSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
-  addItemToCart() {
+  addItemToCart(product: Product) {
+    const currentItems = this.cartItemsSubject.value;
+    const existingItem = currentItems.find(
+      (item) => item.product.id === product.id
+    );
+    if (existingItem) {
+      // Si l'article existe déjà, mettez à jour la quantité
+      existingItem.quantity++;
+    } else {
+      // Sinon, ajoutez un nouvel élément au panier
+      currentItems.push({ product, quantity: 1 });
+    }
+
+    this.cartItemsSubject.next([...currentItems]);
     this.cartItemCountSubject.next(this.cartItemCountSubject.value + 1);
     this.showPopupSubject.next(true);
+  }
+  removeItemFromCart(productId: number) {
+    const currentItems = this.cartItemsSubject.value;
+    const updatedItems = currentItems.filter(
+      (item) => item.product.id !== productId
+    );
+    this.cartItemsSubject.next(updatedItems);
   }
 
   getCartItemCount(): Observable<number> {

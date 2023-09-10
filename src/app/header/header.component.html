@@ -27,12 +27,20 @@
                     <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <p>One fine body&hellip;</p>
+                    <ul>
+                        <li *ngFor="let item of cartItems">
+                            {{ item.product.name }} - {{ item.product.price }} - Quantité : {{ item.quantity }}
+                            <button (click)="incrementQuantity(item)">+</button>
+                            <button (click)="decrementQuantity(item)">-</button>
+                            <button (click)="removeFromCart(item.product.id)">Supprimer</button>
+                        </li>
+                    </ul>
                     <div class="text-end">
                         <button type="button" class="btn btn-outline-dark" (click)="offcanvas.close('Close click')">Fermer</button>
                     </div>
                 </div>
             </ng-template>
+
 
 
         </div>

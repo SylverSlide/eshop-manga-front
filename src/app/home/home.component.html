@@ -6,7 +6,7 @@
     <div class="row mt-5">
         <ng-container *ngFor="let product of products; let i = index">
             <div class="col-md-4">
-                <app-product [productName]="product.name" [productImageUrl]="product.coverImage" [productPrice]="product.price" [isAvailableInStock]="product.isAvailableInStock!!" [id]="product.id"></app-product>
+                <app-product [product]="product"></app-product>
             </div>
             <div *ngIf="i % 3 === 2" class="w-100"></div>
         </ng-container>
