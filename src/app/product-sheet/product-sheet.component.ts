@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import {
   faArrowAltCircleLeft,
@@ -8,46 +14,95 @@ import { CartService } from '../services/cart.service';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product.model';
 import { ActivatedRoute } from '@angular/router';
+import KeenSlider, { KeenSliderInstance, KeenSliderPlugin } from 'keen-slider';
+
+function ThumbnailPlugin(main: KeenSliderInstance): KeenSliderPlugin {
+  return (slider) => {
+    function removeActive() {
+      slider.slides.forEach((slide) => {
+        slide.classList.remove('active');
+      });
+    }
+    function addActive(idx: number) {
+      slider.slides[idx].classList.add('active');
+    }
+
+    function addClickEvents() {
+      slider.slides.forEach((slide, idx) => {
+        slide.addEventListener('click', () => {
+          main.moveToIdx(idx);
+        });
+      });
+    }
+
+    slider.on('created', () => {
+      addActive(slider.track.details.rel);
+      addClickEvents();
+      main.on('animationStarted', (main) => {
+        removeActive();
+        const next = main.animator.targetIdx || 0;
+        addActive(main.track.absToRel(next));
+        slider.moveToIdx(Math.min(slider.track.details.maxIdx, next));
+      });
+    });
+  };
+}
 
 @Component({
   selector: 'app-product-sheet',
   templateUrl: './product-sheet.component.html',
-  styleUrls: ['./product-sheet.component.scss'],
+  styleUrls: [
+    '../../../node_modules/keen-slider/keen-slider.min.css',
+    './product-sheet.component.scss',
+  ],
 })
-export class ProductSheetComponent implements OnInit {
+export class ProductSheetComponent implements OnInit, AfterViewInit {
   faLeft = faArrowAltCircleLeft;
   faRight = faArrowAltCircleRight;
   product: Product;
-  carouselImages: string[] = [];
-  slides: any = [
-    { id: 'K' },
-    { id: 'L' },
-    { id: 'M' },
-    { id: 'N' },
-    { id: 'O' },
-  ];
+  carouselImages: any = [];
+  @ViewChild('sliderRef') sliderRef: ElementRef<HTMLElement>;
+  @ViewChild('thumbnailRef') thumbnailRef: ElementRef<HTMLElement>;
+  slider: KeenSliderInstance;
+  thumbnailSlider: KeenSliderInstance;
+
   quantity: number = 1;
   productForm: FormGroup;
 
-  getPrevIndex(index: number): number {
-    return (index - 1 + this.slides.length) % this.slides.length;
-  }
-
-  getNextIndex(index: number): number {
-    return (index + 1) % this.slides.length;
-  }
   constructor(
     private fb: FormBuilder,
     private cartService: CartService,
     private productService: ProductService,
     private route: ActivatedRoute
   ) {}
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.slider = new KeenSlider(this.sliderRef.nativeElement);
+      this.thumbnailSlider = new KeenSlider(
+        this.thumbnailRef.nativeElement,
+        {
+          initial: 0,
+          loop: true,
+          slides: {
+            perView: 3,
+            spacing: 24,
+          },
+        },
+        [ThumbnailPlugin(this.slider)]
+      );
+    }, 100);
+  }
 
   ngOnInit(): void {
     this.getProduct();
     this.productForm = this.fb.group({
       quantity: [this.quantity],
     });
+  }
+
+  ngOnDestroy() {
+    if (this.slider) this.slider.destroy();
+    if (this.thumbnailSlider) this.thumbnailSlider.destroy();
   }
 
   getProduct() {
@@ -68,13 +123,26 @@ export class ProductSheetComponent implements OnInit {
             updatedProduct.isAvailableInStock = false;
           }
           this.product = product;
-          this.carouselImages.push(updatedProduct.coverImage);
+          this.carouselImages.push({ id: 1, path: updatedProduct.coverImage });
           if (product.images.length > 0) {
+            let index = 2;
             product.images.forEach((image: any) => {
-              this.carouselImages.push(image.path);
+              this.carouselImages.push({ id: index++, path: image.path });
             });
           }
-          console.log(product);
+          this.slider = new KeenSlider(this.sliderRef.nativeElement);
+          this.thumbnailSlider = new KeenSlider(
+            this.thumbnailRef.nativeElement,
+            {
+              initial: 0,
+              loop: true,
+              slides: {
+                perView: 3,
+                spacing: 24,
+              },
+            },
+            [ThumbnailPlugin(this.slider)]
+          );
         },
         (error) => {
           console.error("Une erreur s'est produite : ", error);
