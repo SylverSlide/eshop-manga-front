@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Product } from '../models/product.model';
@@ -18,7 +18,8 @@ export class ProductComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private cartService: CartService
+    private cartService: CartService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +30,12 @@ export class ProductComponent implements OnInit {
 
   addToCart(product: Product) {
     this.cartService.addItemToCart(product);
+  }
+
+  navigateToProduct(product: Product) {
+    this.router.navigate(['product', product.id], {
+      state: { productData: product },
+    });
   }
 
   increment() {

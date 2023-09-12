@@ -5,10 +5,14 @@ import {
   TemplateRef,
   ViewChild,
 } from '@angular/core';
-import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCartShopping,
+  faUser,
+  faXmark,
+} from '@fortawesome/free-solid-svg-icons';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { CartService } from '../services/cart.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from '../services/authentication.service';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -26,6 +30,7 @@ export class HeaderComponent implements OnInit {
   closeResult: string;
   faBag = faCartShopping;
   faUser = faUser;
+  faXmark = faXmark;
   cartItemCount: number = 0;
   showPopup: boolean = false;
   userDetails: User;

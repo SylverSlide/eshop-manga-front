@@ -1,128 +1,150 @@
 .my-carousel-image {
-  width: 600px; /* or whatever width you want */
-  height: 600px; /* or whatever height you want */
-  object-fit: contain; /* This property will make sure your image covers the whole area without distorting the aspect ratio */
+    width: 600px;
+    /* or whatever width you want */
+    height: 600px;
+    /* or whatever height you want */
+    object-fit: contain;
+    /* This property will make sure your image covers the whole area without distorting the aspect ratio */
 }
 
 fa-icon {
-  font-size: 3em;
-  color: black;
+    font-size: 3em;
+    color: black;
 }
+
 .btn {
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 45px;
-  max-width: 200px;
-  position: relative;
-  text-decoration: none;
-  text-transform: uppercase;
-  width: 100%;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 45px;
+    max-width: 200px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: 100%;
 }
+
 .btn:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
+
 
 /*btn_background*/
+
 .effect-smooth {
-  color: #fff;
-  border: 4px solid #000;
-  box-shadow: 0px 0px 0px 1px #000 inset;
-  background-color: #000;
-  overflow: hidden;
-  position: relative;
-  transition: all 0.3s ease-in-out;
+    color: #fff;
+    border: 4px solid #000;
+    box-shadow: 0px 0px 0px 1px #000 inset;
+    background-color: #000;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease-in-out;
 }
+
 .effect-smooth:hover {
-  border: 4px solid #666;
-  background-color: #fff;
-  box-shadow: 0px 0px 0px 4px #eee inset;
+    border: 4px solid #666;
+    background-color: #fff;
+    box-shadow: 0px 0px 0px 4px #eee inset;
 }
+
 
 /*btn_text*/
+
 .effect-smooth span {
-  transition: all 0.2s ease-out;
-  z-index: 2;
-}
-.effect-smooth:hover span {
-  letter-spacing: 0.13em;
-  color: #333;
+    transition: all 0.2s ease-out;
+    z-index: 2;
 }
 
+.effect-smooth:hover span {
+    letter-spacing: 0.13em;
+    color: #333;
+}
+
+
 /*highlight*/
+
 .effect-smooth:after {
-  background: #fff;
-  border: 0px solid #000;
-  content: "";
-  height: 155px;
-  left: -75px;
-  opacity: 0.8;
-  position: absolute;
-  top: -50px;
-  -webkit-transform: rotate(35deg);
-  transform: rotate(35deg);
-  width: 50px;
-  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1); /*easeOutCirc*/
-  z-index: 1;
+    background: #fff;
+    border: 0px solid #000;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: 0.8;
+    position: absolute;
+    top: -50px;
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+    width: 50px;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    /*easeOutCirc*/
+    z-index: 1;
 }
+
 .effect-smooth:hover:after {
-  background: #fff;
-  border: 20px solid #000;
-  opacity: 0;
-  left: 120%;
-  -webkit-transform: rotate(40deg);
-  transform: rotate(40deg);
+    background: #fff;
+    border: 20px solid #000;
+    opacity: 0;
+    left: 120%;
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
 }
+
 [class^="number-slide"],
 [class*=" number-slide"] {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 50px;
-  color: #fff;
-  font-weight: 500;
-  max-height: 100vh;
-  width: 650px;
-  height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: #fff;
+    font-weight: 500;
+    max-height: 100vh;
+    width: 650px;
+    height: 350px;
 }
 
 .cover {
-  width: 100%;
+    width: 100%;
 }
 
 img {
-  object-fit: cover;
+    object-fit: cover;
 }
-.thumbnail .keen-slider__slide {
-  font-size: 30px;
-  margin-top: 50px;
-  width: 100px;
-  height: 150px;
 
-  position: relative;
-}
 .thumbnail .keen-slider__slide {
-  cursor: pointer;
+    font-size: 30px;
+    margin-top: 50px;
+    width: 100px;
+    height: 150px;
+    position: relative;
+}
+
+.thumbnail .keen-slider__slide {
+    cursor: pointer;
 }
 
 .thumbnail .keen-slider__slide::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #977a56;
-  opacity: 0; /* Commencez avec une opacité de 0 pour qu'il soit initialement invisible */
-  transition: opacity 0.5s; /* Transition douce lors du survol */
-  pointer-events: none; /* Pour s'assurer que l'élément sous-jacent reste interactif */
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #977a56;
+    opacity: 0;
+    /* Commencez avec une opacité de 0 pour qu'il soit initialement invisible */
+    transition: opacity 0.5s;
+    /* Transition douce lors du survol */
+    pointer-events: none;
+    /* Pour s'assurer que l'élément sous-jacent reste interactif */
 }
 
 .thumbnail .keen-slider__slide:hover::before {
-  opacity: 0.35; /* Rendre visible au survol */
+    opacity: 0.35;
+    /* Rendre visible au survol */
 }
+
 .thumbnail .keen-slider__slide.active {
-  border: 0.5px solid #977a56;
+    border: 0.5px solid #977a56;
 }

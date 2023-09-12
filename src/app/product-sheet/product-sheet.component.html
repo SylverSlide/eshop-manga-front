@@ -1,78 +1,54 @@
 <div sty class="container">
-  <div class="row">
-    <div *ngIf="thumbnailSlider" class="col-12 col-md-6">
-      <div class="keen-slider" #sliderRef>
-        <div
-          *ngFor="let slide of carouselImages"
-          class="keen-slider__slide"
-          [ngClass]="'number-slide' + slide.id"
-        >
-          <img class="cover" [src]="slide.path" [alt]="'Image ' + slide.id" />
-        </div>
-      </div>
-      <div class="keen-slider thumbnail" #thumbnailRef>
-        <div
-          *ngFor="let slide of carouselImages"
-          class="keen-slider__slide"
-          [ngClass]="'number-slide' + slide.id"
-        >
-          <img [src]="slide.path" [alt]="'Image ' + slide.id" />
-        </div>
-      </div>
-    </div>
-    <div class="col-12 col-md-6">
-      <div *ngIf="product">
-        <form [formGroup]="productForm">
-          <h1 class="text-center">{{ product.name }}</h1>
-          <ul>
-            <li>Manga : {{ product.category.name }}</li>
-            <li>Taille :</li>
-            <li>Description :</li>
-          </ul>
-          <div class="row">
-            <div class="col ms-5">
-              <h3>{{ product.price }} EUR</h3>
+    <div class="row">
+
+        <div class="col-12 col-md-6">
+            <div class="keen-slider" #sliderRef>
+                <div *ngFor="let slide of carouselImages" class="keen-slider__slide" [ngClass]="'number-slide' + slide.id">
+                    <img class="cover" [src]="slide.path" [alt]="'Image ' + slide.id" />
+                </div>
             </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col">
-              <button
-                [disabled]="productForm.value.quantity <= 1"
-                mat-raised-button
-                (click)="decrement()"
-                class="me-2"
-                style="height: 50px"
-              >
+            <div class="keen-slider thumbnail" #thumbnailRef>
+                <div *ngFor="let slide of carouselImages" class="keen-slider__slide" [ngClass]="'number-slide' + slide.id">
+                    <img [src]="slide.path" [alt]="'Image ' + slide.id" />
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div *ngIf="product">
+                <form [formGroup]="productForm">
+                    <h1 class="text-center">{{ product.name }}</h1>
+                    <ul>
+                        <li>Manga : {{ product.category.name }}</li>
+                        <li>Taille :</li>
+                        <li>Description :</li>
+                    </ul>
+                    <div class="row">
+                        <div class="rol">
+                            <div class="col">
+                                <h3>{{ product.price }} EUR</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col">
+                            <button [disabled]="productForm.value.quantity <= 1" mat-raised-button (click)="decrement()" style="height: 50px">
                 -
               </button>
-              <mat-form-field style="width: 70px; height: 80px">
-                <input
-                  type="text"
-                  formControlName="quantity"
-                  class="form-control text-dark text-center"
-                  matInput
-                />
-              </mat-form-field>
-              <button
-                style="height: 50px"
-                class="ms-2"
-                mat-raised-button
-                (click)="increment()"
-              >
-                +
-              </button>
-            </div>
-          </div>
-
-          <div class="row mt-3">
-            <div class="col text-start">
-              <button (click)="addToCart(product)" class="btn effect-smooth">
+                            <mat-form-field style="width: 60px; height: 60px;">
+                                <input type="text" formControlName="quantity" class="form-control text-dark text-center" matInput />
+                            </mat-form-field>
+                            <button style="height: 50px" mat-raised-button (click)="increment()">+</button>
+                        </div>
+                        <div class="col">
+                            <button (click)="addToCart(product)" class="btn effect-smooth">
                 <span>Ajouter au panier</span>
               </button>
+                        </div>
+                    </div>
+
+                </form>
             </div>
-          </div>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
 </div>

@@ -22,9 +22,9 @@
         </button>
 
             <ng-template #offCanvasContent let-offcanvas>
-                <div class="offcanvas-header">
+                <div class="offcanvas-header border-bottom ">
                     <h4 class="offcanvas-title">Panier</h4>
-                    <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+                    <button type="button" class="mt-2 btn btn-link" (click)="offcanvas.close('Close click')"> <fa-icon [icon]="faXmark"></fa-icon> Fermer</button>
                 </div>
                 <div class="offcanvas-body">
                     <ul>
@@ -35,9 +35,7 @@
                             <button (click)="removeFromCart(item.product.id)">Supprimer</button>
                         </li>
                     </ul>
-                    <div class="text-end">
-                        <button type="button" class="btn btn-outline-dark" (click)="offcanvas.close('Close click')">Fermer</button>
-                    </div>
+
                 </div>
             </ng-template>
 
@@ -63,9 +61,6 @@
                 <button class="btn" (click)="openDialog()" *ngIf="!isTokenInSession()">
           <fa-icon [icon]="faUser"></fa-icon>
         </button>
-                <div class="cart-popup" *ngIf="showPopup">
-                    Votre panier a été mis à jour !
-                </div>
             </div>
         </div>
     </div>
